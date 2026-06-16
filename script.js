@@ -2,6 +2,7 @@ const header = document.querySelector("[data-header]");
 const nav = document.querySelector("[data-nav]");
 const navToggle = document.querySelector("[data-nav-toggle]");
 const revealItems = document.querySelectorAll(".reveal");
+const accordionToggles = document.querySelectorAll(".mission-toggle, .obligation-toggle");
 const navToggleLabel = navToggle.querySelector(".sr-only");
 
 function updateHeaderState() {
@@ -37,6 +38,57 @@ nav.addEventListener("click", (event) => {
     closeNav();
   }
 });
+
+function closeAccordion(toggle, panel, item) {
+  toggle.setAttribute("aria-expanded", "false");
+  item.classList.remove("is-open");
+  panel.style.maxHeight = "0px";
+}
+
+function openAccordion(toggle, panel, item) {
+  toggle.setAttribute("aria-expanded", "true");
+  item.classList.add("is-open");
+  panel.style.maxHeight = `${panel.scrollHeight}px`;
+}
+
+accordionToggles.forEach((toggle) => {
+  const panel = document.getElementById(toggle.getAttribute("aria-controls"));
+  const item = toggle.closest(".mission-accordion, .obligation-accordion");
+
+  if (!panel || !item) {
+    return;
+  }
+
+  closeAccordion(toggle, panel, item);
+
+  toggle.addEventListener("click", () => {
+    const isOpen = toggle.getAttribute("aria-expanded") === "true";
+
+    if (isOpen) {
+      closeAccordion(toggle, panel, item);
+    } else {
+      openAccordion(toggle, panel, item);
+    }
+  });
+});
+
+window.addEventListener(
+  "resize",
+  () => {
+    accordionToggles.forEach((toggle) => {
+      if (toggle.getAttribute("aria-expanded") !== "true") {
+        return;
+      }
+
+      const panel = document.getElementById(toggle.getAttribute("aria-controls"));
+
+      if (panel) {
+        panel.style.maxHeight = `${panel.scrollHeight}px`;
+      }
+    });
+  },
+  { passive: true }
+);
 
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape" && nav.classList.contains("is-open")) {
