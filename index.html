@@ -41,8 +41,7 @@
         <div class="container hero-grid">
           <div class="hero-content reveal">
             <img class="hero-logo" src="assets/logo-slrp-spring.png" alt="Logo SLRP" />
-            <p class="eyebrow">Coordonnateur SPS en Haute-Loire</p>
-            <h1 class="hero-title hero-service-title">Coordination Sécurité et Protection de la Santé</h1>
+            <h1 class="hero-title hero-local-title">Coordonnateur SPS en Haute-Loire</h1>
             <p class="lead">Votre partenaire local pour la prévention des risques sur chantier.</p>
             <div class="hero-actions" aria-label="Actions rapides">
               <a class="btn btn-secondary" href="tel:0678422489">Appeler</a>
@@ -63,8 +62,8 @@
           <div class="slrp-content section-content reveal">
             <div class="slrp-intro text-panel">
               <p>
-                Basée à Arsac-en-Velay, SLRP accompagne les opérations de construction, de rénovation et de
-                réhabilitation en Haute-Loire et départements limitrophes.
+                Basée à Arsac-en-Velay, SLRP accompagne les maîtres d'ouvrage dans leurs opérations de construction, de
+                rénovation et de réhabilitation en Haute-Loire et départements limitrophes.
               </p>
               <p>
                 Nous accompagnons les maîtres d'ouvrage dans l'organisation de la prévention des risques liés à la
@@ -231,18 +230,27 @@
             </p>
           </div>
           <div class="obligation-content section-content reveal">
-            <div class="obligation-block obligation-intro">
-              <h3 class="section-subtitle">Principe général</h3>
-              <p>
-                La coordination Sécurité et Protection de la Santé intervient principalement lorsque plusieurs
-                entreprises ou sous-traitants sont amenés à intervenir sur une même opération de bâtiment ou de génie
-                civil.
-              </p>
-              <p>
-                Son objectif est d'anticiper les risques liés à la coactivité et d'organiser les interventions dans les
-                meilleures conditions de sécurité possibles.
-              </p>
-            </div>
+            <article class="obligation-block obligation-accordion obligation-accordion-compact">
+              <button class="obligation-toggle" type="button" aria-expanded="false" aria-controls="principes-sps">
+                <span class="obligation-arrow" aria-hidden="true"></span>
+                <span>
+                  <strong>Principes généraux</strong>
+                </span>
+              </button>
+              <div class="obligation-panel" id="principes-sps">
+                <div class="obligation-panel-text">
+                  <p>
+                    La coordination Sécurité et Protection de la Santé intervient principalement lorsque plusieurs
+                    entreprises ou sous-traitants sont amenés à intervenir sur une même opération de bâtiment ou de génie
+                    civil.
+                  </p>
+                  <p>
+                    Son objectif est d'anticiper les risques liés à la coactivité et d'organiser les interventions dans les
+                    meilleures conditions de sécurité possibles.
+                  </p>
+                </div>
+              </div>
+            </article>
 
             <article class="obligation-block obligation-accordion">
               <button class="obligation-toggle" type="button" aria-expanded="false" aria-controls="categories-sps">
@@ -290,14 +298,13 @@
                       des catégories 1 et 2.
                     </p>
                   </article>
+                  <p class="category-note">
+                    Chaque opération possède ses propres spécificités. En cas de doute, une analyse préalable permet de
+                    déterminer les obligations applicables.
+                  </p>
                 </div>
               </div>
             </article>
-
-            <p class="obligation-note">
-              Chaque opération possède ses propres spécificités. En cas de doute, une analyse préalable permet de
-              déterminer les obligations applicables.
-            </p>
 
             <div class="obligation-cta">
               <div>
@@ -317,14 +324,22 @@
         <div class="container section-layout">
           <div class="section-heading section-header reveal">
             <h2 class="section-title main-section-title">Zone d'intervention</h2>
-            <p class="section-lead">Une présence locale en Haute-Loire et zones limitrophes.</p>
+            <p class="section-lead">Haute-Loire et départements limitrophes</p>
           </div>
-          <div class="area-map section-content reveal" aria-label="Carte graphique de la Haute-Loire">
-            <img
-              class="haute-loire-map"
-              src="assets/carte-haute-loire-clean.png"
-              alt="Carte de la Haute-Loire et des départements limitrophes"
-            />
+          <div class="area-text section-content reveal">
+            <p>
+              Basée à Arsac-en-Velay, SLRP intervient principalement en Haute-Loire, notamment autour du Puy-en-Velay,
+              de Brioude et d'Yssingeaux. Selon les besoins du projet, l'accompagnement peut également s'étendre aux
+              départements limitrophes.
+            </p>
+            <div class="area-pills" aria-label="Territoires d'intervention">
+              <span>Haute-Loire</span>
+              <span>Puy-de-Dôme</span>
+              <span>Loire</span>
+              <span>Ardèche</span>
+              <span>Lozère</span>
+              <span>Cantal</span>
+            </div>
           </div>
         </div>
       </section>
@@ -333,11 +348,12 @@
         <div class="container section-layout contact-grid">
           <div class="contact-info section-header reveal">
             <h2 class="section-title main-section-title">Contact</h2>
-            <p class="section-lead">Parlons de votre opération.</p>
             <div class="contact-lines">
+              <span>Alexandre SICARD</span>
+              <span>17 Route du Monastier</span>
+              <span>43700 Arsac-en-Velay</span>
               <a href="tel:0678422489">06 78 42 24 89</a>
-              <small>Adresse mail professionnelle en cours de création</small>
-              <span>Arsac-en-Velay</span>
+              <a href="mailto:contact@slrp-csps.fr">contact@slrp-csps.fr</a>
             </div>
           </div>
 
