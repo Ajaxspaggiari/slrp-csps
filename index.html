@@ -357,7 +357,11 @@
             </div>
           </div>
 
-          <form class="contact-form section-content reveal" action="mailto:contact@slrp-csps.fr" method="post" enctype="text/plain">
+          <form class="contact-form section-content reveal" action="https://formsubmit.co/contact@slrp-csps.fr" method="POST">
+            <input type="hidden" name="_subject" value="Nouvelle demande depuis le site SLRP" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_next" value="https://www.slrp-csps.fr/merci.html" />
             <label>
               Nom
               <input type="text" name="nom" autocomplete="name" required />
@@ -368,7 +372,7 @@
             </label>
             <label>
               Email
-              <input type="email" name="email" autocomplete="email" />
+              <input type="email" name="email" autocomplete="email" required />
             </label>
             <label>
               Type d'opération

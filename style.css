@@ -1033,6 +1033,56 @@ p {
   font-size: 0.92rem;
 }
 
+.thanks-page {
+  min-height: 100vh;
+  color: var(--white);
+  background:
+    linear-gradient(135deg, rgba(38, 38, 43, 0.92), rgba(38, 38, 43, 0.78)),
+    url("assets/hero-csps-renovation.png") center / cover no-repeat;
+}
+
+.thanks-main {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 40px 20px;
+}
+
+.thanks-section {
+  width: min(100%, 680px);
+}
+
+.thanks-card {
+  display: grid;
+  justify-items: center;
+  gap: 18px;
+  padding: clamp(30px, 6vw, 54px);
+  border: 1px solid rgba(222, 216, 204, 0.18);
+  border-radius: 8px;
+  background: rgba(38, 38, 43, 0.72);
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+
+.thanks-logo {
+  width: clamp(120px, 22vw, 180px);
+}
+
+.thanks-card h1 {
+  margin: 0;
+  color: var(--gold);
+  font-size: clamp(2.1rem, 5vw, 3.4rem);
+  line-height: 1.05;
+}
+
+.thanks-card p:not(.eyebrow) {
+  max-width: 520px;
+  margin: 0;
+  color: rgba(238, 232, 221, 0.84);
+  font-size: 1.08rem;
+  line-height: 1.7;
+}
+
 .floating-call {
   position: fixed;
   right: 16px;
