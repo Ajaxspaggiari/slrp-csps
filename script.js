@@ -2,7 +2,7 @@ const header = document.querySelector("[data-header]");
 const nav = document.querySelector("[data-nav]");
 const navToggle = document.querySelector("[data-nav-toggle]");
 const revealItems = document.querySelectorAll(".reveal");
-const accordionToggles = document.querySelectorAll(".mission-toggle, .obligation-toggle");
+const accordionToggles = document.querySelectorAll(".mission-toggle, .obligation-toggle, .category-toggle");
 const navToggleLabel = navToggle.querySelector(".sr-only");
 
 function updateHeaderState() {
@@ -39,21 +39,34 @@ nav.addEventListener("click", (event) => {
   }
 });
 
+function updateAncestorPanels(panel) {
+  let parentPanel = panel.parentElement?.closest(".mission-panel, .obligation-panel, .category-panel");
+
+  while (parentPanel) {
+    parentPanel.style.maxHeight = "none";
+    parentPanel = parentPanel.parentElement?.closest(".mission-panel, .obligation-panel, .category-panel");
+  }
+}
+
 function closeAccordion(toggle, panel, item) {
   toggle.setAttribute("aria-expanded", "false");
   item.classList.remove("is-open");
+  panel.style.maxHeight = `${panel.scrollHeight}px`;
+  void panel.offsetHeight;
   panel.style.maxHeight = "0px";
+  updateAncestorPanels(panel);
 }
 
 function openAccordion(toggle, panel, item) {
   toggle.setAttribute("aria-expanded", "true");
   item.classList.add("is-open");
   panel.style.maxHeight = `${panel.scrollHeight}px`;
+  updateAncestorPanels(panel);
 }
 
 accordionToggles.forEach((toggle) => {
   const panel = document.getElementById(toggle.getAttribute("aria-controls"));
-  const item = toggle.closest(".mission-accordion, .obligation-accordion");
+  const item = toggle.closest(".mission-accordion, .obligation-accordion, .category-accordion");
 
   if (!panel || !item) {
     return;
@@ -68,6 +81,12 @@ accordionToggles.forEach((toggle) => {
       closeAccordion(toggle, panel, item);
     } else {
       openAccordion(toggle, panel, item);
+    }
+  });
+
+  panel.addEventListener("transitionend", () => {
+    if (toggle.getAttribute("aria-expanded") === "true") {
+      panel.style.maxHeight = "none";
     }
   });
 });
