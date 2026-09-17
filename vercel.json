@@ -3,17 +3,17 @@
     {
       "source": "/",
       "destination": "https://www.alti-prevention.fr/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/index.html",
       "destination": "https://www.alti-prevention.fr/",
-      "permanent": true
+      "statusCode": 301
     },
     {
       "source": "/merci.html",
       "destination": "https://www.alti-prevention.fr/",
-      "permanent": true
+      "statusCode": 301
     }
   ]
 }
