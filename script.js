@@ -2,7 +2,8 @@ const header = document.querySelector("[data-header]");
 const nav = document.querySelector("[data-nav]");
 const navToggle = document.querySelector("[data-nav-toggle]");
 const revealItems = document.querySelectorAll(".reveal");
-const accordionToggles = document.querySelectorAll(".mission-toggle, .obligation-toggle, .category-toggle");
+const accordionToggles = document.querySelectorAll(".mission-toggle, .obligation-toggle");
+const categoryToggles = document.querySelectorAll(".category-toggle");
 const navToggleLabel = navToggle.querySelector(".sr-only");
 
 function updateHeaderState() {
@@ -43,15 +44,20 @@ function updateAncestorPanels(panel) {
   let parentPanel = panel.parentElement?.closest(".mission-panel, .obligation-panel, .category-panel");
 
   while (parentPanel) {
-    parentPanel.style.maxHeight = "none";
+    const parentToggle = document.querySelector(`[aria-controls="${parentPanel.id}"]`);
+
+    if (parentToggle?.getAttribute("aria-expanded") === "true") {
+      parentPanel.style.maxHeight = "none";
+    }
+
     parentPanel = parentPanel.parentElement?.closest(".mission-panel, .obligation-panel, .category-panel");
   }
 }
 
 function closeAccordion(toggle, panel, item) {
   toggle.setAttribute("aria-expanded", "false");
-  item.classList.remove("is-open");
   panel.style.maxHeight = `${panel.scrollHeight}px`;
+  item.classList.remove("is-open");
   void panel.offsetHeight;
   panel.style.maxHeight = "0px";
   updateAncestorPanels(panel);
@@ -60,13 +66,13 @@ function closeAccordion(toggle, panel, item) {
 function openAccordion(toggle, panel, item) {
   toggle.setAttribute("aria-expanded", "true");
   item.classList.add("is-open");
-  panel.style.maxHeight = `${panel.scrollHeight}px`;
+  panel.style.maxHeight = panel.querySelector(".category-list") ? "none" : `${panel.scrollHeight}px`;
   updateAncestorPanels(panel);
 }
 
 accordionToggles.forEach((toggle) => {
   const panel = document.getElementById(toggle.getAttribute("aria-controls"));
-  const item = toggle.closest(".mission-accordion, .obligation-accordion, .category-accordion");
+  const item = toggle.closest(".mission-accordion, .obligation-accordion");
 
   if (!panel || !item) {
     return;
@@ -91,6 +97,26 @@ accordionToggles.forEach((toggle) => {
   });
 });
 
+categoryToggles.forEach((toggle) => {
+  const panel = document.getElementById(toggle.getAttribute("aria-controls"));
+  const item = toggle.closest(".category-accordion");
+
+  if (!panel || !item) {
+    return;
+  }
+
+  toggle.setAttribute("aria-expanded", "false");
+  item.classList.remove("is-open");
+
+  toggle.addEventListener("click", () => {
+    const isOpen = toggle.getAttribute("aria-expanded") === "true";
+
+    toggle.setAttribute("aria-expanded", isOpen ? "false" : "true");
+    item.classList.toggle("is-open", !isOpen);
+    updateAncestorPanels(panel);
+  });
+});
+
 window.addEventListener(
   "resize",
   () => {
@@ -102,7 +128,7 @@ window.addEventListener(
       const panel = document.getElementById(toggle.getAttribute("aria-controls"));
 
       if (panel) {
-        panel.style.maxHeight = `${panel.scrollHeight}px`;
+        panel.style.maxHeight = panel.querySelector(".category-list") ? "none" : `${panel.scrollHeight}px`;
       }
     });
   },

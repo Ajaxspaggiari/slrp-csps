@@ -672,15 +672,24 @@ p {
 }
 
 .mission-panel,
-.obligation-panel,
-.category-panel {
+.obligation-panel {
   max-height: 0;
   overflow: hidden;
   transition: max-height 260ms ease;
 }
 
-.obligation-accordion.is-open > .obligation-panel,
+.obligation-accordion.is-open > .obligation-panel {
+  max-height: none;
+  overflow: visible;
+}
+
+.category-panel {
+  max-height: 0;
+  overflow: hidden;
+}
+
 .category-accordion.is-open > .category-panel {
+  max-height: none;
   overflow: visible;
 }
 
@@ -741,7 +750,7 @@ p {
 
 .obligation-accordion {
   padding: 0;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .obligation-toggle {
