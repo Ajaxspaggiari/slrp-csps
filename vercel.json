@@ -1,0 +1,19 @@
+{
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "https://www.alti-prevention.fr/",
+      "permanent": true
+    },
+    {
+      "source": "/index.html",
+      "destination": "https://www.alti-prevention.fr/",
+      "permanent": true
+    },
+    {
+      "source": "/merci.html",
+      "destination": "https://www.alti-prevention.fr/",
+      "permanent": true
+    }
+  ]
+}
